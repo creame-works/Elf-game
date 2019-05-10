@@ -15,20 +15,14 @@ public class MyPlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         rigidbody = GetComponent<Rigidbody2D>();
     }
-
-    private void FixedUpdate()
-    {
-        rigidbody.AddForce(new Vector2(0, -gravity));
-    }
-
     void Update()
     {
         float x = Input.GetAxisRaw("Horizontal");
-        //float y = Input.GetAxisRaw("Vertical");
         Vector2 dir = new Vector2(x, 0).normalized;
 
         //rigidbody.velocity = dir * force;
-        rigidbody.AddForce(dir * force);
+        //transform.position += (Vector3)dir * force;
+        rigidbody.position += dir * force;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
