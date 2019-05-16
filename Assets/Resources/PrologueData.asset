@@ -20,7 +20,7 @@ MonoBehaviour:
     - number: 2
       sentence: "\u4FFA\u306F\u3000\u4FFA\u306F\uFF01"
     - number: 3
-      sentence: "\u5168\u3066\u3092"
+      sentence: "\u3068\uFF10\u3053\u3092"
     - number: 4
       sentence: "\u624B\u306B\u5165\u308C\u308B\u3093\u3060\u30FC\uFF01"
     - number: 5
