@@ -723,12 +723,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeMode: 0
-  duration: 5
+  duration: 2
   speed: 5
   delay: 0
-  style: 1
+  style: 2
   playOnAwake: 1
-  m_progress: 0.04318264
+  m_progress: 0.9172607
   usePosition: 0
   useRotation: 0
   useScale: 0
@@ -882,9 +882,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  alphaSeparation: 0.5
+  alphaSeparation: 0
   colorFrom: {r: 1, g: 1, b: 1, a: 1}
-  colorTo: {r: 1, g: 1, b: 1, a: 1}
+  colorTo: {r: 0, g: 0, b: 0, a: 1}
   colorAnimationCurve:
     serializedVersion: 2
     m_Curve:

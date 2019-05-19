@@ -6,12 +6,11 @@ using System.IO;
 using UnityEngine.UI;
 public class TextController : MonoBehaviour
 {
-    PrologueText prologueText;
     [SerializeField] private GameObject[] sentences = null;
-    List<string> sentenceList = new List<string>();
     [SerializeField] private Text guideText = null;
+    PrologueText prologueText;
+    private List<string> sentenceList = new List<string>();
     private int index = 0;
-    private int maxSentence = 5;
     void Start()
     {
         prologueText = Resources.Load("PrologueData") as PrologueText;
