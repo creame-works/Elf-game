@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef360dde8417994b96541705c9be7f9, type: 3}
+  m_Name: PrologueData
+  m_EditorClassIdentifier: 
+  sheets:
+  - name: Sheet1
+    list:
+    - number: 1
+      sentence: "\u3046\u3049\u3049\u3049\u3049\u3049\u304A"
+    - number: 2
+      sentence: "\u4FFA\u306F\u3000\u4FFA\u306F\uFF01"
+    - number: 3
+      sentence: "\u3068\uFF10\u3053\u3092"
+    - number: 4
+      sentence: "\u624B\u306B\u5165\u308C\u308B\u3093\u3060\u30FC\uFF01"
+    - number: 5
+      sentence: ivjdi
+    - number: 6
+      sentence: vnionoibw
