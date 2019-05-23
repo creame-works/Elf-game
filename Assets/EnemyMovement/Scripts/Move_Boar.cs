@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Move_Boar : MonoBehaviour
 {
+    public float scrollSpeed;
     public Vector2 initPosition = new Vector2(20, -5);
     public float speed = 0.2f;
 

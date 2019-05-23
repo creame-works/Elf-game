@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Move_Fish : MonoBehaviour
 {
+    public float scrollSpeed;
     public Vector2 initPosition = new Vector2(5, -5);
     public float appearTime = 3.0f;
     public float jumpPower = 10.0f;
@@ -31,7 +32,7 @@ public class Move_Fish : MonoBehaviour
             {
                 Jump();
             }
-            else if(jumpFlag == true)
+            else if (jumpFlag == true)
             {
                 Vector2 nextPosition = this.transform.position;
                 nextPosition.y += vy;
