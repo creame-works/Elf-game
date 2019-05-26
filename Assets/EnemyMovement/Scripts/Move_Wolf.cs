@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Move_Wolf : MonoBehaviour
 {
+    public float scrollSpeed;
     public Vector2 initPosition = new Vector2(10.0f, -3.0f);
     public float speed = 0.5f;          //狼の足の速さ
     public float jumpPower = 3.0f;      //どのぐらいの高さジャンプするか
@@ -30,13 +31,13 @@ public class Move_Wolf : MonoBehaviour
 
         SetPosition();
 
-        if(isGround == true)
+        if (isGround == true)
         {
-            if(jumpWaitTimeCounter < jumpWaitTime)
+            if (jumpWaitTimeCounter < jumpWaitTime)
             {
                 jumpWaitTimeCounter += Time.deltaTime;
             }
-            else if(jumpWaitTimeCounter >= jumpWaitTime)
+            else if (jumpWaitTimeCounter >= jumpWaitTime)
             {
                 Jump();
                 jumpWaitTimeCounter = 0.0f;

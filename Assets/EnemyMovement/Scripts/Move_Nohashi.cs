@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Move_Nohashi : MonoBehaviour
 {
+    public float scrollSpeed;
     public float jumpPower = 3.0f;
     public float gravity = 0.3f;
 
