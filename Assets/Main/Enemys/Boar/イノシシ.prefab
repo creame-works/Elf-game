@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7083274555914379067}
   - component: {fileID: 7083274555914379064}
   - component: {fileID: 7083274555914379065}
+  - component: {fileID: 139727240}
   m_Layer: 10
   m_Name: "\u30A4\u30CE\u30B7\u30B7"
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7083274555914379070}
-  m_LocalRotation: {x: -0, y: -0, z: -0.043619405, w: 0.9990483}
+  m_LocalRotation: {x: 0, y: 0, z: -0.043619405, w: 0.9990483}
   m_LocalPosition: {x: 9.51, y: -2.88, z: 0}
   m_LocalScale: {x: 0.15000007, y: 0.15000007, z: 1}
   m_Children: []
@@ -153,6 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -0.15
+  knockBack_x: 700
+  KnockBack_y: 700
 --- !u!114 &7083274555914379065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,3 +169,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 0.2
+--- !u!61 &139727240
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083274555914379070}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -5, y: -4}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 15.94, y: 8.99}
+    newSize: {x: 15.19, y: 9.33}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4836235, y: 1}
+  m_EdgeRadius: 0

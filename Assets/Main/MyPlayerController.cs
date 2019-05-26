@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MyPlayerController : MonoBehaviour
 {
@@ -91,14 +92,12 @@ public class MyPlayerController : MonoBehaviour
         if (col.gameObject.tag == "Ground")
         {
             state = STATE.ON_JUMP;
-           // Debug.Log("air");
         }
     }
 
     private void KnockBack()
     {
         rb.AddForce(new Vector2(-knockBack_x, knockBack_y));
-        //Debug.Log("knock");
     }
 
     private void Damaged(Collision2D col)
@@ -107,6 +106,7 @@ public class MyPlayerController : MonoBehaviour
         slider.value = HP;
         gameObject.layer = 12;
         s_renderer.color -= new Color(0, 0, 0, 0.5f);
+        
     }
 
     private void OnDamage()
@@ -131,5 +131,13 @@ public class MyPlayerController : MonoBehaviour
         player_pos.x = Mathf.Clamp(player_pos.x, -9f, 9f); //x位置が常に範囲内か監視
 
         transform.position = new Vector2(player_pos.x, player_pos.y); //範囲内であれば常にその位置がそのまま入る
+    }
+
+    void JudgeDeath()
+    {
+        if(HP <= 0 || transform.position.y <= -6)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }

@@ -36,9 +36,10 @@ public class SceneMgr : MonoBehaviour
     {
         if(disCount >= clearDistance)
         {
-            //SceneManager.LoadScene("Clear");
+            SceneManager.LoadScene("Clear");
         }
     }
+    
 
     void BarPoint()
     {
