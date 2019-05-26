@@ -18,6 +18,15 @@ public class MenusController : MonoBehaviour
     private bool onWindowFlg = false;   // ポップアップウィンドウが出てるかのフラグ
 
     public GameObject[] selectBackColor = new GameObject[3];
+
+    public AudioSource audioSource;
+
+    public AudioClip[] audioClips = new AudioClip[2];
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     
     
     void Update()
@@ -36,6 +45,8 @@ public class MenusController : MonoBehaviour
             nowSelectNum++;
             menus[nowSelectNum % menuNum].transform.Translate(new Vector3(moveDistance, 0, 0));
             selectBackColor[nowSelectNum % menuNum].SetActive(true);
+
+            Play(0);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -44,6 +55,8 @@ public class MenusController : MonoBehaviour
             nowSelectNum += (menuNum - 1);
             menus[nowSelectNum % menuNum].transform.Translate(new Vector3(moveDistance, 0, 0));
             selectBackColor[nowSelectNum % menuNum].SetActive(true);
+
+            Play(0);
         }
     }
     
@@ -53,6 +66,8 @@ public class MenusController : MonoBehaviour
     {
         if (!onWindowFlg && Input.GetKeyDown(KeyCode.Return))
         {
+            Play(1);
+
             switch (nowSelectNum % menuNum)
             {
                 case 0:
@@ -75,6 +90,12 @@ public class MenusController : MonoBehaviour
     public void SetPopupFlg(bool flg)
     {
         onWindowFlg = flg;
+    }
+
+    private void Play(int clipNum)
+    {
+        audioSource.clip = audioClips[clipNum];
+        audioSource.Play();
     }
 
 }

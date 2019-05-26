@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class TextController : MonoBehaviour
 {
     PrologueText prologueText;
@@ -11,7 +12,7 @@ public class TextController : MonoBehaviour
     List<string> sentenceList = new List<string>();
     [SerializeField] private Text guideText = null;
     private int index = 0;
-    private int maxSentence = 5;
+
     void Start()
     {
         prologueText = Resources.Load("PrologueData") as PrologueText;
@@ -44,7 +45,7 @@ public class TextController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Return) && index == sentenceList.Count - 1)
         {
-            Debug.Log("チュートリアル画面に遷移");
+            SceneManager.LoadScene("MainScene");
         }
     }
 }
