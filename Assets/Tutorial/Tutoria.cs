@@ -18,7 +18,6 @@ public class Tutoria : MonoBehaviour
 
     // パートAで使うものs
     public Image Back;
-    private float time = 0;
     public float startTime;
     public Text[] texts = new Text[4];
     private int nowNum = 0;
@@ -27,8 +26,9 @@ public class Tutoria : MonoBehaviour
     // パートBで使うものs
     public GameObject stageTitle;
     public GameObject[] InputExplanation = new GameObject[2];
-    private bool a = false;
-    public GameObject ToNextEnter;
+    private bool stageCalled = false;
+    public GameObject toNextEnter;
+    private bool B1_actived = false;
 
 
     // パートCで使うものs
@@ -54,41 +54,40 @@ public class Tutoria : MonoBehaviour
                 break;
 
             case STATE.B_1:
-                stageTitle.SetActive(true);
+                if (!B1_actived)
+                {
+                    stageTitle.SetActive(true);
+                    B1_actived = true;
+                }
                 if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    ToNextEnter.SetActive(true);
+                    toNextEnter.SetActive(true);
                 }
 
-                if (Input.GetKeyDown(KeyCode.Return) && a)
+                if (Input.GetKeyDown(KeyCode.Return) && stageCalled)
                 {
                     InputExplanation[0].SetActive(false);
                     InputExplanation[1].SetActive(true);
                     playerScript.SetState(2);
-                    ToNextEnter.SetActive(false);
+                    toNextEnter.SetActive(false);
                     SceneState = STATE.B_2;
                 }
-
                 break;
 
             case STATE.B_2:
                 if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Space))
                 {
-                    ToNextEnter.SetActive(true);
+                    toNextEnter.SetActive(true);
                 }
-                if (Input.GetKeyDown(KeyCode.Return) && a)
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
                     FinishExplanation();
-                    
                 }
                     break;
             case STATE.C:
-                if (!C_actived)
+                if (!C_actived && boar.transform.position.x <= -10f)
                 {
-                    if(go.transform.position.x <= -10f)
-                    {
-                        Hitorigoto2Start();
-                    }
+                    Hitorigoto2Start();
                 }
                 
                 Hitorigoto2();
@@ -97,18 +96,7 @@ public class Tutoria : MonoBehaviour
         
     }
 
-    void Hitorigoto()
-    {
-        
-        if (A_actived)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                NextText();
-            }
-        }
-
-    }
+    
 
     void HitorigotoStart()
     {
@@ -117,22 +105,24 @@ public class Tutoria : MonoBehaviour
         A_actived = true;
     }
 
-    void TutorialStart()
+    void Hitorigoto()
     {
-        
-        InputExplanation[0].SetActive(true);
-        playerScript.SetState(1);
-        a = true;
-        
+        if (A_actived)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                NextText(3);
+            }
+        }
     }
 
-    void NextText()
+    void NextText(int num)
     {
-        if (nowNum == 3)
+        if (nowNum == num)
         {
             FinishText();
         }
-        if (nowNum != 3)
+        if (nowNum != num)
         {
             texts[nowNum].gameObject.SetActive(false);
             nowNum++;
@@ -140,39 +130,41 @@ public class Tutoria : MonoBehaviour
         }
     }
 
-    private void TimeCount()
-    {
-        time += Time.deltaTime;
-    }
-
     private void FinishText()
     {
         texts[nowNum].gameObject.SetActive(false);
         Back.gameObject.SetActive(false);
-        time = 0;
         SceneState = STATE.B_1;
-        Invoke("TutorialStart", startTime);
-
+        Invoke("TutorialStart", 5);
     }
 
+    void TutorialStart()
+    {
+        InputExplanation[0].SetActive(true);
+        playerScript.SetState(1);
+        stageCalled = true;
+    }
+    
     private void FinishExplanation()
     {
         playerScript.SetState(0);
         SceneState = STATE.C;
         InputExplanation[1].SetActive(false);
-        ToNextEnter.SetActive(false);
+        toNextEnter.SetActive(false);
         Invoke("CallShakeMethod", 2f);
         Invoke("GenerateBoar", 4f);
     }
 
+    // 画面を揺らすメソッド
     private void CallShakeMethod()
     {
         shake.Shake(0.25f, 0.1f);
     }
 
+    // イノシシを生成するメソッド
     private void GenerateBoar()
     {
-        go = Instantiate(boar, boarGenPos, Quaternion.identity);
+        boar.SetActive(true);
     }
 
     void Hitorigoto2Start()
@@ -185,7 +177,6 @@ public class Tutoria : MonoBehaviour
 
     void Hitorigoto2()
     {
-
         if (C_actived)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -193,7 +184,6 @@ public class Tutoria : MonoBehaviour
                 NextText2();
             }
         }
-
     }
 
     void NextText2()
@@ -214,7 +204,6 @@ public class Tutoria : MonoBehaviour
     {
         texts2[nowNum].gameObject.SetActive(false);
         Back.gameObject.SetActive(false);
-        time = 0;
         SceneManager.LoadScene("MainScene");
     }
 }

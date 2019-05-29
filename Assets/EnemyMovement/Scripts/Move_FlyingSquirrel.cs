@@ -8,14 +8,14 @@ public class Move_FlyingSquirrel : MonoBehaviour
     public GameObject Player;
     public float scrollSpeed;
     public float flyXPosition;
-    public Vector2 initPosition = new Vector2(11.5f, 4.5f);
+    //public Vector2 initPosition = new Vector2(11.5f, 4.5f);
     //public Vector2 middlePoint;
     private Vector2 middlePoint;
     public Vector2 finishPoint = new Vector2(-20, 4);
 
     private Vector3[] orbit = new Vector3[3];
 
-    public float moveTime = 1.0f;      //どのぐらいの時間で移動するか
+    public float moveTime = 3.0f;      //どのぐらいの時間で移動するか
 
     enum State
     {
@@ -26,15 +26,15 @@ public class Move_FlyingSquirrel : MonoBehaviour
 
     private State state;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         state = State.STAY;
-        this.transform.position = initPosition;
+        //this.transform.position = initPosition;
 
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
 
         switch (state)
@@ -54,8 +54,19 @@ public class Move_FlyingSquirrel : MonoBehaviour
 
     void StartMove()
     {
+        Player = GameObject.FindWithTag("Player");
+        /*
+        if(Player.transform.position.x <= 0)
+        {
+            orbit[1] = Player.transform.position;
+        } else
+        {
+            orbit[1] = new Vector3(0, -3f, 0);
+        }*/
+
         orbit[0] = this.transform.position;
-        orbit[1] = Player.transform.position;
+        //orbit[1] = Player.transform.position;
+        orbit[1] = new Vector3(0, -3f, 0);
         orbit[2] = finishPoint;
 
         Sequence fadeInSequence = DOTween.Sequence();
