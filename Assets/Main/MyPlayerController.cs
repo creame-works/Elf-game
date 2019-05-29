@@ -39,6 +39,7 @@ public class MyPlayerController : MonoBehaviour
     {
         Clamp();
         OnDamage();
+        JudgeDeath();
         switch (state)
         {
             case STATE.ON_GROUND:
@@ -49,7 +50,6 @@ public class MyPlayerController : MonoBehaviour
             case STATE.ON_JUMP:
                 Move();
                 break;
-
         }
 
         
@@ -135,7 +135,7 @@ public class MyPlayerController : MonoBehaviour
 
     void JudgeDeath()
     {
-        if(HP <= 0 || transform.position.y <= -6)
+        if(HP <= 0 || transform.position.y <= -10f)
         {
             SceneManager.LoadScene("GameOver");
         }

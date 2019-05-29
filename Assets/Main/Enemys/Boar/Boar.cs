@@ -18,6 +18,10 @@ public class Boar : MonoBehaviour
     void Update()
     {
         transform.Translate(new Vector2(speed, 0), Space.World);
+        if(transform.position.x <= -15f)
+        {
+            Destroy(gameObject);
+        }
     }
     
     void OnTriggerExit2D(Collider2D col)
@@ -25,7 +29,6 @@ public class Boar : MonoBehaviour
         if(col.gameObject.tag == "Ground")
         {
             rb.AddForce(new Vector2(-knockBack_x, KnockBack_y));
-            Debug.Log("ok");
         }
     }
 }

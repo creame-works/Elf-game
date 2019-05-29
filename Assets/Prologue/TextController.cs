@@ -45,7 +45,7 @@ public class TextController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Return) && index == sentenceList.Count - 1)
         {
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("Tutorial");
         }
     }
 }

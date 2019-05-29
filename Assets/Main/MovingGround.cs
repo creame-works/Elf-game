@@ -6,17 +6,15 @@ public class MovingGround : MonoBehaviour
 {
 
     [SerializeField] public float speed;
-
-
-    void Start()
-    {
-    }
     
-
    
     void Update()
     {
         transform.position += new Vector3(-speed, 0, 0);
+        if(transform.position.x <= -22f)
+        {
+            Destroy(gameObject);
+        }
     }
     
 }
