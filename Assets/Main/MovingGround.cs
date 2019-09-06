@@ -11,7 +11,7 @@ public class MovingGround : MonoBehaviour
     void Update()
     {
         transform.position += new Vector3(-speed, 0, 0);
-        if(transform.position.x <= -22f)
+        if(transform.position.x <= -25f)
         {
             Destroy(gameObject);
         }

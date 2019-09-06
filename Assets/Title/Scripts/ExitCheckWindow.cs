@@ -89,7 +89,7 @@ public class ExitCheckWindow: MonoBehaviour
             {
                 // はいを選択したとき
                 case 0:
-                    UnityEditor.EditorApplication.isPlaying = false;
+                    //UnityEditor.EditorApplication.isPlaying = false;
                     Application.Quit();
                     break;
 

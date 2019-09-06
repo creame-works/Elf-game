@@ -66,7 +66,7 @@ public class Move_FlyingSquirrel : MonoBehaviour
 
         orbit[0] = this.transform.position;
         //orbit[1] = Player.transform.position;
-        orbit[1] = new Vector3(0, -3f, 0);
+        orbit[1] = new Vector3(0, -4f, 0);
         orbit[2] = finishPoint;
 
         Sequence fadeInSequence = DOTween.Sequence();

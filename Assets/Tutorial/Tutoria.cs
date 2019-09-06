@@ -111,18 +111,18 @@ public class Tutoria : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                NextText(3);
+                NextText();
             }
         }
     }
 
-    void NextText(int num)
+    void NextText()
     {
-        if (nowNum == num)
+        if (nowNum == 3)
         {
             FinishText();
         }
-        if (nowNum != num)
+        if (nowNum != 3)
         {
             texts[nowNum].gameObject.SetActive(false);
             nowNum++;
@@ -151,8 +151,8 @@ public class Tutoria : MonoBehaviour
         SceneState = STATE.C;
         InputExplanation[1].SetActive(false);
         toNextEnter.SetActive(false);
-        Invoke("CallShakeMethod", 2f);
-        Invoke("GenerateBoar", 4f);
+        Invoke("CallShakeMethod", 1f);
+        Invoke("GenerateBoar", 3f);
     }
 
     // 画面を揺らすメソッド
